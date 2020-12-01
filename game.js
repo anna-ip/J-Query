@@ -1,13 +1,79 @@
-const gamePattern = []
+const userClickedPattern = []
 const buttonColours = ['red', 'blue', 'green', 'yellow']
+const gamePattern = []
 
 const nextSequence = () => {
+  // the btn clicked id is stored in userChosenColor
+  $('div.btn').click((event) => {
+    const userChosenColour = $(event.target).attr('id')
+    console.log(userChosenColour)
+    userClickedPattern.push(userChosenColour)
+    console.log(userClickedPattern)
+  })
+
   let randomNumber = Math.floor(Math.random() * 4)
   //console.log(randomNumber)
-  return randomNumber
+  const randomChosenColour = buttonColours[randomNumber]
+  gamePattern.push(randomChosenColour)
+  //return randomNumber
+
+  //** Flash animation added to clicked btn **/
+  $('#' + randomChosenColour)
+    .fadeIn(100)
+    .fadeOut(100)
+    .fadeIn(100)
+
+  //** Adding the sound **/
+  var audio = new Audio('sounds/' + randomChosenColour + '.mp3')
+  audio.play()
 }
 //nextSequence()
 
-const randomChosenColour = buttonColours[nextSequence()]
-let newArray = gamePattern.push(randomChosenColour)
-console.log(newArray)
+// const randomChosenColour = buttonColours[nextSequence()]
+// console.log(randomChosenColour)
+// let newArray = gamePattern.push(randomChosenColour)
+// console.log(newArray)
+
+//** Adding the sound to the btns when clicked**/
+// $(document).ready(function () {
+//   var audioElement = document.createElement('audio')
+//   audioElement.setAttribute('src', 'sounds/' + randomChosenColour + '.mp3')
+
+//   audioElement.addEventListener(
+//     'ended',
+//     function () {
+//       this.play()
+//       this.currentTime = 1
+//     },
+//     false
+//   )
+
+//   $('#' + randomChosenColour).click(function () {
+//     audioElement.play()
+//     //$('#status').text('Status: Playing')
+//   })
+// })
+
+// const play = () => {
+//   var audio = new Audio('sounds/' + randomChosenColour + '.mp3')
+//   audio.play()
+//   audio.currentTime = 1
+// }
+// $('#' + randomChosenColour).click(() => {
+//   var audio = new Audio('sounds/' + randomChosenColour + '.mp3')
+//   audio.play()
+//   audio.currentTime = 1
+// })
+
+// //** Flash animation added to clicked btn **/
+// //$(':button').click(() => {
+// $('#' + randomChosenColour).click(() => {
+//   setInterval(() => {
+//     $('#' + randomChosenColour)
+//       .fadeOut(100)
+//       .fadeIn(100)
+//   }, 2000)
+
+//   //alert(randomChosenColour + '.click()')
+// })
+// //})
