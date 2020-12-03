@@ -7,3 +7,6 @@ Simon game built with Jquery, a game where you press buttons after a random patt
 * JQuery
 * HTML
 * CSS
+
+## Deployed game:
+https://simon-game-anna-almestal.netlify.app/
