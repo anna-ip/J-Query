@@ -6,6 +6,7 @@ let userClickedPattern = []
 let level = 0
 let started = false
 
+//* Start the game *
 $(document).keypress(() => {
   if (!started) {
     $('#level-title').text('Level ' + level)
@@ -19,12 +20,13 @@ $('.btn').click((event) => {
   userClickedPattern.push(userChosenColour)
   console.log('You clicked:', userClickedPattern)
 
-  playSound(userChosenColour) //invokes the playsound function and sending userChosenColor as a parameter
-  animatePress(userChosenColour) //invokes the animatePress function and sending userChosenColor as a parameter
+  playSound(userChosenColour) //* invokes the playsound function and sending userChosenColor as a parameter
+  animatePress(userChosenColour) //* invokes the animatePress function and sending userChosenColor as a parameter
 
   checkAnswer(userClickedPattern.length - 1)
 })
 
+//* Check answer *
 const checkAnswer = (currentLevel) => {
   console.log(currentLevel)
   if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
@@ -58,7 +60,7 @@ const nextSequence = () => {
   const randomChosenColour = buttonColours[randomNumber]
   gamePattern.push(randomChosenColour)
 
-  //** Flash animation added to clicked btn **/
+  //** Flash animation to clicked btn **/
   $('#' + randomChosenColour)
     .fadeIn(100)
     .fadeOut(100)
@@ -80,6 +82,7 @@ const animatePress = (currentColor) => {
   }, 100)
 }
 
+//* resets the game *
 const startOver = () => {
   level = 0
   gamePattern = []
